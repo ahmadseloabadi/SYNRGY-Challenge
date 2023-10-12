@@ -1,20 +1,15 @@
-var carouselWidth = $(".carousel-inner")[0].scrollWidth;
-
-var cardWidth = $(".carousel-item").width();
-
-var scrollPosition = 0;
-
-$(".btn-control-next").on("click", function () {
-  if (scrollPosition < carouselWidth - cardWidth * 4) {
-    //check if you can go any further
-    scrollPosition += cardWidth; //update scroll position
-    $(".carousel-inner").animate({ scrollLeft: scrollPosition }, 600); //scroll left
-  }
-});
-
-$(".btn-control-prev").on("click", function () {
-  if (scrollPosition > 0) {
-    scrollPosition -= cardWidth;
-    $(".carousel-inner").animate({ scrollLeft: scrollPosition }, 600);
-  }
+const swiper = new Swiper(".sample-slider", {
+  loop: true, //loop
+  slidesPerView: 2, //number of slides to show
+  centeredSlides: true, //put acctive slide center
+  spaceBetween: 32, //space between slides
+  autoplay: {
+    //autoplay
+    delay: 2000,
+  },
+  navigation: {
+    //navigation（arrows）
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
 });
