@@ -1,1 +1,1 @@
-# challenge_1
+# SYNRGY challenge :)
