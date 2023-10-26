@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cari mobil</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <style>
+    .cars-box-search {
+      margin: 0px 61px;
+      position: relative;
+      padding: 24px;
+      transform: translateY(-35%);
+      background: var(--neutral-01, #fff);
+    }
+    label {
+      font-family: "Rubik", sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 18px;
+    }
+    input::placeholder {
+      color: var(--neutral-03, #8a8a8a);
+
+      font-family: Helvetica;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 18px;
+    }
+    option,
+    .form-select {
+      color: var(--neutral-04, #3c3c3c);
+      padding: 9px 12px;
+      font-family: Helvetica;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 18px;
+    }
+  </style>
+  <body>
+    <!-- hero -->
+    <section class="hero mb-0">
+      <!-- navbar -->
+      <nav class="navbar navbar-expand-lg p-0">
+        <div class="container-fluid custom-navbar">
+          <a class="navbar-brand" href="#"
+            ><img src="images/logo.png" alt=" " />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">BCR</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body d-sm-none">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#our-service"
+                    ><strong>Our Services</strong></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#why-us"
+                    ><strong>Why Us</strong></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#testimonial"
+                    ><strong>Testimonial</strong></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#faq"
+                    ><strong>FAQ</strong></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="btn btn-primary">Register</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#our-service"
+                  ><strong>Our Services</strong></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#why-us"
+                  ><strong>Why Us</strong></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#testimonial"
+                  ><strong>Testimonial</strong></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#faq"
+                  ><strong>FAQ</strong></a
+                >
+              </li>
+              <li class="nav-item">
+                <a href="#" class="btn btn-primary">Register</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- end navbar -->
+
+      <!-- header -->
+      <div class="header">
+        <div class="container-fluid custom-header">
+          <div class="row header-desc align-items-center">
+            <div class="col header-title">
+              <h1 class="big-header mb-3">
+                Sewa & Rental Mobil Terbaik di <br />
+                kawasan (Lokasimu)
+              </h1>
+              <p class="primary-copy">
+                Selamat datang di Binar Car Rental. Kami menyediakan mobil
+                kualitas <br />
+                terbaik dengan harga terjangkau. Selalu siap melayani
+                kebutuhanmu
+                <br />
+                untuk sewa mobil selama 24 jam.
+              </p>
+            </div>
+            <div class="col header-banner">
+              <img src="images/img_car.png" alt="" class="car-img img-fluid" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end header -->
+    </section>
+    <!-- end hero -->
+
+    <!-- car search -->
+    <section class="cariMobil mb-0">
+      <div
+        class="cars-box-search row rounded-2 d-flex gap-3 shadow justify-content-between"
+      >
+        <div class="col inputDriver">
+          <label class="pb-1">Tipe Driver</label>
+          <select class="form-select" id="driver" required>
+            <option value="" hidden>Pilih Tipe Driver</option>
+            <option value="true">Dengan Supir</option>
+            <option value="false">Tanpa Supir(Lepas Kunci)</option>
+          </select>
+        </div>
+        <div class="col inputDate">
+          <label class="pb-1">Tanggal</label>
+          <input
+            type="text"
+            id="date"
+            class="form-control"
+            placeholder="Pilih Tanggal"
+            onfocus="(this.type = 'date')"
+          />
+        </div>
+        <div class="col inputTime">
+          <label class="pb-1">Waktu Jemput/Ambil</label>
+          <input
+            placeholder="Pilih Waktu"
+            type="text"
+            id="time"
+            class="form-control"
+            onfocus="(this.type = 'time')"
+            required
+          />
+        </div>
+        <div class="col inputPassanger">
+          <label class="pb-1">Jumlah Penumpang</label>
+          <input
+            type="number"
+            class="form-control"
+            id="passanger"
+            placeholder="Jumlah Penumpang"
+          />
+        </div>
+        <div class="align-self-end" style="width: fit-content">
+          <button
+            class="btn btn-primary"
+            type="button"
+            id="load-btn"
+            style="height: 38px"
+          >
+            Cari Mobil
+          </button>
+        </div>
+      </div>
+
+      <!-- Daftar Mobil Tersedia -->
+      <div class="container-lg">
+        <div
+          class="row row-cols-auto justify-content-center"
+          id="cars-container"
+        >
+          <!-- Data JSON -->
+        </div>
+      </div>
+    </section>
+    <!-- car search -->
+
+    <!-- footer -->
+    <section class="footer">
+      <div class="container-fluid custom-footer">
+        <div class="row footer-content">
+          <div class="col footer-address">
+            <p class="primary-copy">
+              Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000
+            </p>
+            <p class="primary-copy">binarrental@gmail.com</p>
+            <p class="primary-copy">081-233-334-808</p>
+          </div>
+          <div class="col footer-service">
+            <a class="primary-copy" href="#our-service"
+              ><strong>Our Services </strong>
+            </a>
+
+            <a class="primary-copy" href="#why-us"><strong>Why Us </strong></a>
+
+            <a class="primary-copy" href="#testimonial"
+              ><strong>Testimonial </strong></a
+            >
+
+            <a class="primary-copy" href="#FAQ"><strong>FAQ </strong></a>
+          </div>
+          <div class="col footer-contact-us">
+            <p class="primary-copy">Connect with us</p>
+            <div class="icon-footer">
+              <img src="images/icons/icon_facebook.png" alt="" />
+              <img src="images/icons/icon_instagram.png" alt="" />
+              <img src="images/icons/icon_twitter.png" alt="" />
+              <img src="images/icons/icon_mail.png" alt="" />
+              <img src="images/icons/icon_twitch.png" alt="" />
+            </div>
+          </div>
+          <div class="col footer-copyright">
+            <p class="primary-copy">Copyright Binar 2023</p>
+            <img src="images/logo.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end footer -->
+  </body>
+  <script src=""></script>
+</html>
