@@ -42,11 +42,11 @@ class Car {
   render() {
     return `
     <div class="col ">
-    <div class="card shadow bg-white" style="width: 18rem">
+    <div class="card shadow bg-white" style="width: 18rem; border-radius: 8px;">
         <img src="${this.image}" class="card-img-top img-fluid" style="height: 190px; object-fit: cover;" />
         <div class="card-body" style="font-size: 14px; padding:24px;">
             <p class="card-title">${this.manufacture} ${this.model}</p>
-            <p class="fw-bold">Rp.400.000/ hari</p>
+            <p class="fw-bold"> Rp ${this.rentPerDay} / hari</p>
             <p class="card-text" style="height: 90px">${this.description}</p>
             <div> <i class="bi bi-people-fill me-2"></i>${this.capacity} Orang</div>
             <div class="mt-3 mb-3"> <i class="bi bi-gear me-2"></i>${this.transmission}</div>
