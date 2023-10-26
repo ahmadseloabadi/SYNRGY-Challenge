@@ -126,7 +126,7 @@
                 <br />
                 untuk sewa mobil selama 24 jam.
               </p>
-              <a href="#" class="btn btn-primary">Mulai Sewa Mobil</a>
+              <a href="/cars" class="btn btn-primary"> Mulai Sewa Mobil </a>
             </div>
             <div class="col header-banner">
               <img src="images/img_car.png" alt="" class="car-img img-fluid" />
@@ -158,31 +158,31 @@
             </p>
             <div class="d-flex flex-column gap-4">
               <div class="badge d-flex gap-4 p-0">
-                <img class="icon" src="images/icon_check.png" alt="" />
+                <img class="icon" src="images/icons/icon_check.png" alt="" />
                 <p class="primary-copy mb-0">
                   Sewa Mobil Dengan Supir di Bali 12 Jam
                 </p>
               </div>
               <div class="badge d-flex gap-4 p-0">
-                <img class="icon" src="images/icon_check.png" alt="" />
+                <img class="icon" src="images/icons/icon_check.png" alt="" />
                 <p class="primary-copy mb-0">
                   Sewa Mobil Lepas Kunci di Bali 24 Jam
                 </p>
               </div>
               <div class="badge d-flex gap-4 p-0">
-                <img class="icon" src="images/icon_check.png" alt="" />
+                <img class="icon" src="images/icons/icon_check.png" alt="" />
                 <p class="primary-copy mb-0">
                   Sewa Mobil Jangka Panjang Bulanan
                 </p>
               </div>
               <div class="badge d-flex gap-4 p-0">
-                <img class="icon" src="images/icon_check.png" alt="" />
+                <img class="icon" src="images/icons/icon_check.png" alt="" />
                 <p class="primary-copy mb-0">
                   Gratis Antar - Jemput Mobil di Bandara
                 </p>
               </div>
               <div class="badge d-flex gap-4 p-0">
-                <img class="icon" src="images/icon_check.png" alt="" />
+                <img class="icon" src="images/icons/icon_check.png" alt="" />
                 <p class="primary-copy mb-0">
                   Layanan Airport Transfer / Drop In Out
                 </p>
@@ -206,7 +206,7 @@
         <div class="row card-why-us">
           <div class="card-content">
             <div class="card-body">
-              <img src="images/icon_tumb.png" alt="" />
+              <img src="images/icons/icon_tumb.png" alt="" />
               <h5 class="card-title small-header">Mobil Lengkap</h5>
               <p class="card-text primary-copy">
                 Tersedia banyak pilihan mobil, kondisi masih baru, bersih dan
@@ -216,7 +216,7 @@
           </div>
           <div class="card-content">
             <div class="card-body">
-              <img src="images/icon_price.png" alt="" />
+              <img src="images/icons/icon_price.png" alt="" />
               <h5 class="card-title small-header">Harga Murah</h5>
               <p class="card-text primary-copy">
                 Harga murah dan bersaing, bisa bandingkan harga kami dengan
@@ -226,7 +226,7 @@
           </div>
           <div class="card-content">
             <div class="card-body">
-              <img src="images/icon_24hrs.png" alt="" />
+              <img src="images/icons/icon_24hrs.png" alt="" />
               <h5 class="card-title small-header">Layanan 24 Jam</h5>
               <p class="card-text primary-copy">
                 Siap melayani kebutuhan Anda selama 24 jam nonstop. Kami juga
@@ -236,7 +236,7 @@
           </div>
           <div class="card-content">
             <div class="card-body">
-              <img src="images/icon_professional.png" alt="" />
+              <img src="images/icons/icon_professional.png" alt="" />
               <h5 class="card-title small-header">Sopir Profesional</h5>
               <p class="card-text primary-copy">
                 Sopir yang profesional, berpengalaman, jujur, ramah dan selalu
@@ -659,11 +659,11 @@
           <div class="col footer-contact-us">
             <p class="primary-copy">Connect with us</p>
             <div class="icon-footer">
-              <img src="images/icon_facebook.png" alt="" />
-              <img src="images/icon_instagram.png" alt="" />
-              <img src="images/icon_twitter.png" alt="" />
-              <img src="images/icon_mail.png" alt="" />
-              <img src="images/icon_twitch.png" alt="" />
+              <img src="images/icons/icon_facebook.png" alt="" />
+              <img src="images/icons/icon_instagram.png" alt="" />
+              <img src="images/icons/icon_twitter.png" alt="" />
+              <img src="images/icons/icon_mail.png" alt="" />
+              <img src="images/icons/icon_twitch.png" alt="" />
             </div>
           </div>
           <div class="col footer-copyright">
@@ -680,44 +680,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script>
-      const swiper = new Swiper(".sample-slider", {
-        loop: true, //loop
-        slidesPerView: 3, //number of slides to show
-        centeredSlides: true, //put acctive slide center
-        spaceBetween: 32, //space between slides
-        autoplay: {
-          //autoplay
-          delay: 2000,
-        },
-        breakpoints: {
-          1440: {
-            slidesPerView: 2,
-            spaceBetween: 32,
-          },
-          1024: {
-            slidesPerView: 1.75,
-            spaceBetween: 32,
-          },
-          768: {
-            slidesPerView: 1.2,
-            spaceBetween: 20,
-          },
-          360: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          0: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-        },
-        navigation: {
-          //navigation（arrows）
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
+    <script type="text/javascript" src="./scripts/swipper.js"></script>
   </body>
 </html>
