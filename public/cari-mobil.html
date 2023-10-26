@@ -199,21 +199,27 @@
             class="form-control"
             placeholder="Pilih Tanggal"
             onfocus="(this.type = 'date')"
+            required
           />
         </div>
         <div class="col inputTime">
           <label class="pb-1">Waktu Jemput/Ambil</label>
-          <input
-            placeholder="Pilih Waktu"
-            type="text"
+          <select
+            class="form-select form-select-sm"
             id="time"
-            class="form-control"
-            onfocus="(this.type = 'time')"
+            aria-label="Default select example"
             required
-          />
+          >
+            <option hidden>Pilih Waktu</option>
+            <option value="08:00:00">08.00 WIB</option>
+            <option value="09:00:00">09.00 WIB</option>
+            <option value="10:00:00">10.00 WIB</option>
+            <option value="11:00:00">11.00 WIB</option>
+            <option value="12:00:00">12.00 WIB</option>
+          </select>
         </div>
         <div class="col inputPassanger">
-          <label class="pb-1">Jumlah Penumpang</label>
+          <label class="pb-1">Jumlah Penumpang(optional)</label>
           <input
             type="number"
             class="form-control"
@@ -225,7 +231,7 @@
           <button
             class="btn btn-primary"
             type="button"
-            id="load-btn"
+            id="search-btn"
             style="height: 38px"
           >
             Cari Mobil
