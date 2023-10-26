@@ -13,6 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
       rel="stylesheet"
     />
@@ -226,13 +230,26 @@
           >
             Cari Mobil
           </button>
+          <button
+            class="btn btn-danger fw-bold"
+            type="button"
+            id="clear-btn"
+            style="
+              height: 38px;
+              padding: 8px 12px;
+              border-radius: 2px;
+              border: none;
+            "
+          >
+            Clear search
+          </button>
         </div>
       </div>
 
       <!-- Daftar Mobil Tersedia -->
-      <div class="container-lg">
+      <div class="container">
         <div
-          class="row row-cols-auto justify-content-center"
+          class="row row-cols-auto row-gap-3 column-gap-3 justify-content-start"
           id="cars-container"
         >
           <!-- Data JSON -->
@@ -283,6 +300,10 @@
       </div>
     </section>
     <!-- end footer -->
+    <!-- Example Javascript -->
+    <script type="text/javascript" src="./scripts/binar.js"></script>
+    <script type="text/javascript" src="./scripts/app.example.js"></script>
+    <script type="text/javascript" src="./scripts/car.example.js"></script>
+    <script type="text/javascript" src="./scripts/main.example.js"></script>
   </body>
-  <script src=""></script>
 </html>
