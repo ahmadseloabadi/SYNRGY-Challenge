@@ -18,19 +18,46 @@ class App {
 
   run = () => {
     this.clear();
-    Car.list.forEach((car) => {
-      let dateTime = this.filterByDate.value + "T" + this.filterByTime.value;
-      let date = Date.parse(dateTime);
-      let time = Date.parse(car.availableAt);
-      let passanger = this.filterByCapacity.value;
+    const data = this.filterCari();
+    console.log("Jumlah Mobil :", data);
 
-      if (time >= date && car.capacity >= passanger) {
+    if (data.length == 0 || data == undefined) {
+      const node = document.createElement("div");
+      node.innerHTML = "<h1> No Car Available </h1>";
+      this.carContainerElement.appendChild(node);
+    } else {
+      data.forEach((Car) => {
         const node = document.createElement("div");
-        node.innerHTML = car.render();
+        node.innerHTML = Car.render();
         this.carContainerElement.appendChild(node);
-      }
-    });
+      });
+    }
   };
+
+  filterCari() {
+    const dateValue = this.filterByDate.value;
+    const timeValue = this.filterByTime.value;
+    const capacityValue = this.filterByCapacity.value;
+
+    const newDateTime = new Date(`${dateValue}T${timeValue}Z`);
+    const datenow = new Date();
+    console.log("dateValue :", dateValue);
+    console.log("timeValue :", timeValue);
+    console.log("newDateTime :", newDateTime);
+    console.log("tanggal sekarang", datenow);
+    // console.log("tanggal sekarang", datenow.getDate());
+    if (newDateTime.getDate() < datenow.getDate()) {
+      alert("invalid date please input greater than now!");
+      return;
+    } else if (capacityValue < 0) {
+      alert("Invalid passanger amount !");
+      return;
+    } else {
+      return Car.list.filter(
+        (car) => car.capacity >= capacityValue && car.availableAt >= newDateTime
+      );
+    }
+  }
 
   async load() {
     const cars = await Binar.listCars();
