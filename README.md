@@ -2,14 +2,14 @@
 
 # ERD 
 - create on  [`dbdiagram.io`](https://dbdiagram.io/)
-![image](https://github.com/ahmadseloabadi/Synrgy-Challenge/assets/50831996/053f373d-99c7-4cda-9657-2e8373604af6)
+-![image](https://github.com/ahmadseloabadi/Synrgy-Challenge/assets/50831996/053f373d-99c7-4cda-9657-2e8373604af6)
 
 # Routers
 1. Get cars (GET) = http://localhost:8000/api/cars
-2. Get cars by id (GET) = http://localhost:8000/api/cars:id
+2. Get cars by id (GET) = http://localhost:8000/api/cars/:id
 3. Create car (POST) = http://localhost:8000/api/cars
-4. Delete car by id (DELETE) = http://localhost:8000/api/cars:id
-5. Update car by id (UPDATE) = http://localhost:8000/api/cars:id
+4. Delete car by id (DELETE) = http://localhost:8000/api/cars/:id
+5. Update car by id (UPDATE) = http://localhost:8000/api/cars/:id
 
 # Postman & Dbeaver
 - Get cars
