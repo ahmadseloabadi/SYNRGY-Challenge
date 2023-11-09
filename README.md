@@ -9,7 +9,7 @@
 2. Get cars by id (GET) = http://localhost:8000/api/cars/:id
 3. Create car (POST) = http://localhost:8000/api/cars
 4. Delete car by id (DELETE) = http://localhost:8000/api/cars/:id
-5. Update car by id (UPDATE) = http://localhost:8000/api/cars/:id
+5. Update car by id (PATCH) = http://localhost:8000/api/cars/:id
 
 # Postman & Dbeaver
 - Get cars
