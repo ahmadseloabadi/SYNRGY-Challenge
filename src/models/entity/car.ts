@@ -7,8 +7,6 @@ export class CarEntity extends Model {
   car_rentPerDay!: number;
   car_size!: string;
   car_img?: string;
-  // creatAt?: Date;
-  // updateAt?: Date;
 
   static get tableName() {
     return "cars";

@@ -24,8 +24,6 @@ class CarServices {
       car_rentPerDay: car.car_rentPerDay,
       car_size: car.car_size,
       car_img: uploadedFileImage.url,
-      // creatAt: car.creatAt,
-      // updateAt: car.updateAt,
     };
     const createdCar = await CarsRepository.createCar(carToCreate);
 

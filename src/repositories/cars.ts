@@ -17,8 +17,6 @@ class CarsRepository {
       car_rentPerDay: car.car_rentPerDay,
       car_size: car.car_size,
       car_img: car.car_img,
-      // creatAt: car.creatAt,
-      // updateAt: car.updateAt,
     });
 
     return createdCar;
