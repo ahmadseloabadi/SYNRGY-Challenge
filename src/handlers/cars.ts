@@ -45,14 +45,8 @@ class CarsHandler {
 
   async createCar(req: Request, res: Response) {
     const payload: CarRequest = req.body;
+    payload.car_img = req.file;
 
-    const fileBase64 = req.file?.buffer.toString("base64");
-    const file = `data:${req.file?.mimetype};base64,${fileBase64}`;
-
-    const uploadedImage = await cloudinary.uploader.upload(file);
-
-    payload.car_img = uploadedImage.secure_url;
-    // Payload validation
     if (
       !(
         payload.car_name &&
@@ -112,7 +106,7 @@ class CarsHandler {
   async updateCarById(req: Request, res: Response) {
     const queryId: number = parseInt(req.params.id);
     const payload: CarRequest = req.body;
-    payload.car_img = (req as any)["uploaded_car_img"];
+
     // Payload validation
     if (
       !(

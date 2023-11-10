@@ -21,7 +21,7 @@ app.post(
 );
 app.patch(
   "/api/cars/:id",
-  uploadFileUtil.single("car_img"),
+  fileUploadsCloudinary.single("car_img"),
   carsHandler.updateCarById
 );
 app.delete("/api/cars/:id", carsHandler.deleteCarById);
