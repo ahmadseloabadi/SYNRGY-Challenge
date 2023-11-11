@@ -106,6 +106,8 @@ class CarsHandler {
   async updateCarById(req: Request, res: Response) {
     const queryId: number = parseInt(req.params.id);
     const payload: CarRequest = req.body;
+    payload.car_img = req.file;
+    console.log(payload);
 
     // Payload validation
     if (
@@ -143,8 +145,7 @@ class CarsHandler {
       status: "UPDATED",
       message: "Car successfully updated",
       data: {
-        old_car: updatedCar,
-        updated_car: payload,
+        update_car: updatedCar,
       },
     };
     res.status(200).send(response);
