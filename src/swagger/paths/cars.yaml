@@ -1,0 +1,134 @@
+paths:
+  /api/cars:
+    get:
+      summary: Get List cars
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List cars
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
+    post:
+      summary: Created User
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - multipart/form-data
+      requestBody:
+        required: true
+        content:
+          "multipart/form-data":
+            schema:
+              $ref: "#/components/schemas/CarRequest"
+
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Created User
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
+  /api/cars/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the user
+        schema:
+          type: integer
+    get:
+      summary: Get List cars By ID
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: List cars
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
+    delete:
+      summary: Delete User
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Delete User
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
+    patch:
+      summary: Update User
+      security:
+        - BearerAuth: []
+      tags:
+        - Cars
+      consumes:
+        - multipart/form-data
+      requestBody:
+        required: true
+        content:
+          "multipart/form-data":
+            schema:
+              $ref: "#/components/schemas/CarRequest"
+      produces:
+        - application/json
+
+      responses:
+        200:
+          description: Update User
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
