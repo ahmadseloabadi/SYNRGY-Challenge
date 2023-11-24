@@ -2,16 +2,17 @@ import { Car, CarEntity } from "../models/entity/car";
 
 class CarsRepository {
   static async getCars(): Promise<Car[]> {
-    const listCar = await CarEntity.query().withGraphFetched(
-      "[created_by,updated_by,deleted_by]"
-    );
+    const listCar = await CarEntity.query()
+      .withGraphFetched("[created_by,updated_by,deleted_by]")
+      .whereNull("delete_at");
     return listCar;
   }
 
   static async getCarsById(queryId: number): Promise<Car[]> {
     const listCarById = await CarEntity.query()
       .withGraphFetched("[created_by,updated_by,deleted_by]")
-      .where("id", queryId);
+      .where("id", queryId)
+      .whereNull("delete_at");
     return listCarById;
   }
 
