@@ -23,6 +23,17 @@ paths:
                         allOf:
                           - $ref: "#/components/schemas/CarResponse"
                           - $ref: "#/components/schemas/CarDataResponse2"
+        401:
+          description: UNATHORIZED
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
     post:
       summary: Created User
       security:
@@ -66,7 +77,17 @@ paths:
                           create_at:
                             type: string
                             format: date-time
-
+        401:
+          description: UNATHORIZED
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
   /api/cars/{id}:
     parameters:
       - name: id
@@ -98,6 +119,28 @@ paths:
                         allOf:
                           - $ref: "#/components/schemas/CarResponse"
                           - $ref: "#/components/schemas/CarDataResponse2"
+        401:
+          description: UNATHORIZED
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
+        404:
+          description: NOT FOUND
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
     delete:
       summary: Delete User
       security:
@@ -121,6 +164,28 @@ paths:
                         allOf:
                           - $ref: "#/components/schemas/CarResponse"
                           - $ref: "#/components/schemas/CarDataResponse1"
+        401:
+          description: UNATHORIZED
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
+        404:
+          description: NOT FOUND
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
     patch:
       summary: Update User
       security:
@@ -155,3 +220,25 @@ paths:
                         allOf:
                           - $ref: "#/components/schemas/CarResponse"
                           - $ref: "#/components/schemas/CarDataResponse1"
+        401:
+          description: UNATHORIZED
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
+        404:
+          description: NOT FOUND
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null

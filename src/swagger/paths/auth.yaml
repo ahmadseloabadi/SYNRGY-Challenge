@@ -82,6 +82,17 @@ paths:
                       data:
                         allOf:
                           - $ref: "#/components/schemas/AuthRegisterResponse"
+        401:
+          description: UNATHORIZED
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
   /api/auth/me:
     get:
       summary: Get Logged In User
@@ -105,3 +116,14 @@ paths:
                       data:
                         allOf:
                           - $ref: "#/components/schemas/UserResponse"
+        401:
+          description: UNATHORIZED
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
