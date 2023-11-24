@@ -53,6 +53,33 @@ paths:
                       data:
                         allOf:
                           - $ref: "#/components/schemas/AuthRegisterResponse"
+  /api/auth/register-admin:
+    post:
+      summary: Register User
+      tags:
+        - Auth
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/AuthRegisterRequest"
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Registered User
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/AuthRegisterResponse"
   /api/auth/me:
     get:
       summary: Get Logged In User
