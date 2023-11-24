@@ -22,6 +22,7 @@ paths:
                       data:
                         allOf:
                           - $ref: "#/components/schemas/CarResponse"
+                          - $ref: "#/components/schemas/CarDataResponse2"
     post:
       summary: Created User
       security:
@@ -36,7 +37,6 @@ paths:
           "multipart/form-data":
             schema:
               $ref: "#/components/schemas/CarRequest"
-
       produces:
         - application/json
       responses:
@@ -49,8 +49,24 @@ paths:
                   - $ref: "#/components/schemas/Default"
                   - properties:
                       data:
-                        allOf:
-                          - $ref: "#/components/schemas/CarResponse"
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          car_name:
+                            type: string
+                          car_rentperday:
+                            type: string
+                          car_size:
+                            type: string
+                          car_img:
+                            type: string
+                          create_by:
+                            type: integer
+                          create_at:
+                            type: string
+                            format: date-time
+
   /api/cars/{id}:
     parameters:
       - name: id
@@ -81,6 +97,7 @@ paths:
                       data:
                         allOf:
                           - $ref: "#/components/schemas/CarResponse"
+                          - $ref: "#/components/schemas/CarDataResponse2"
     delete:
       summary: Delete User
       security:
@@ -103,6 +120,7 @@ paths:
                       data:
                         allOf:
                           - $ref: "#/components/schemas/CarResponse"
+                          - $ref: "#/components/schemas/CarDataResponse1"
     patch:
       summary: Update User
       security:
@@ -129,6 +147,11 @@ paths:
                 allOf:
                   - $ref: "#/components/schemas/Default"
                   - properties:
-                      data:
+                      old_data:
                         allOf:
                           - $ref: "#/components/schemas/CarResponse"
+                          - $ref: "#/components/schemas/CarDataResponse1"
+                      new_data:
+                        allOf:
+                          - $ref: "#/components/schemas/CarResponse"
+                          - $ref: "#/components/schemas/CarDataResponse1"

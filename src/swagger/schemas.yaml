@@ -17,6 +17,7 @@ components:
           example: superadmin@superadmin.com
         password:
           type: string
+          format: password
           example: superadmin
         role:
           type: string
@@ -37,13 +38,13 @@ components:
           example: coba@gmail.com
         password:
           type: string
+          format: password
           example: coba123456
         profile_picture_url:
           type: string
           example: coba.png
         role:
           type: string
-          example: user
     AuthRegisterResponse:
       type: object
       properties:
@@ -58,6 +59,7 @@ components:
               type: string
             password:
               type: string
+              format: password
             profile_picture_url:
               type: string
             role:
@@ -73,6 +75,7 @@ components:
           example: bos@gmail.com
         password:
           type: string
+          format: password
           example: bos123456
         profile_picture_url:
           type: string
@@ -94,6 +97,7 @@ components:
               type: string
             password:
               type: string
+              format: password
             profile_picture_url:
               type: string
             role:
@@ -126,18 +130,45 @@ components:
               type: string
             car_img:
               type: string
+    CarDataResponse1:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
             create_by:
-              type: object
+              type: integer
             update_by:
-              type: object
+              type: integer
             delete_by:
-              type: object
+              type: integer
             create_at:
               type: string
-              format: date
+              format: date-time
             update_at:
               type: string
-              format: date
+              format: date-time
             delete_at:
               type: string
-              format: date
+              format: date-time
+    CarDataResponse2:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            created_by:
+              type: object
+            updated_by:
+              type: object
+            deleted_by:
+              type: object
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+            deleted_at:
+              type: string
+              format: date-time

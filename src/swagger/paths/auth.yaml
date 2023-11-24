@@ -55,7 +55,9 @@ paths:
                           - $ref: "#/components/schemas/AuthRegisterResponse"
   /api/auth/register-admin:
     post:
-      summary: Register User
+      summary: Register admin
+      security:
+        - BearerAuth: []
       tags:
         - Auth
       consumes:
@@ -70,7 +72,7 @@ paths:
         - application/json
       responses:
         201:
-          description: Registered User
+          description: Registered admin
           content:
             "application/json":
               schema:
