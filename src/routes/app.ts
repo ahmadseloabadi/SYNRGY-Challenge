@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import CarsHandler from "../handlers/cars";
-import UsersHandler from "../handlers/users";
+// import UsersHandler from "../handlers/users";
 import AuthHandler from "../handlers/auth";
 import AuthMiddleware from "../middleware/auth";
 import fileUploadsCloudinary from "../utils/fileUploadsCloudinary";
@@ -24,7 +24,7 @@ declare global {
 }
 
 // Init handlers
-const usersHandler = new UsersHandler();
+// const usersHandler = new UsersHandler();
 const authHandler = new AuthHandler();
 const carsHandler = new CarsHandler();
 
@@ -58,34 +58,34 @@ app.delete(
   carsHandler.deleteCarById
 );
 
-// Users
-app.get(
-  "/api/users",
-  AuthMiddleware.authenticateSuperAdmin,
-  usersHandler.getUsersByName
-);
-app.get(
-  "/api/users/:id",
-  AuthMiddleware.authenticateSuperAdmin,
-  usersHandler.getUsersById
-);
-app.post(
-  "/api/users",
-  AuthMiddleware.authenticateSuperAdmin,
-  fileUploadsCloudinary.single("profile_picture_url"),
-  usersHandler.createUser
-);
-app.patch(
-  "/api/users/:id",
-  AuthMiddleware.authenticateSuperAdmin,
-  fileUploadsCloudinary.single("profile_picture_url"),
-  usersHandler.updateUserById
-);
-app.delete(
-  "/api/users/:id",
-  AuthMiddleware.authenticateSuperAdmin,
-  usersHandler.deleteUserById
-);
+// // Users
+// app.get(
+//   "/api/users",
+//   AuthMiddleware.authenticateSuperAdmin,
+//   usersHandler.getUsersByName
+// );
+// app.get(
+//   "/api/users/:id",
+//   AuthMiddleware.authenticateSuperAdmin,
+//   usersHandler.getUsersById
+// );
+// app.post(
+//   "/api/users",
+//   AuthMiddleware.authenticateSuperAdmin,
+//   fileUploadsCloudinary.single("profile_picture_url"),
+//   usersHandler.createUser
+// );
+// app.patch(
+//   "/api/users/:id",
+//   AuthMiddleware.authenticateSuperAdmin,
+//   fileUploadsCloudinary.single("profile_picture_url"),
+//   usersHandler.updateUserById
+// );
+// app.delete(
+//   "/api/users/:id",
+//   AuthMiddleware.authenticateSuperAdmin,
+//   usersHandler.deleteUserById
+// );
 
 // Auth
 //regis admin by superadmin
