@@ -1,8 +1,5 @@
 # challenge_6 - Ahmad Selo Abadi - FSW 1
 
-masih banyak kekurangan dibagian swagger blm sesuai dengan route yang ada hanya beberapa yg bisa dijalankan <br>
-route users hanya tambahan dan hanya bisa diakses dengan superadmin
-
 # Routers
 
 - AUTH
