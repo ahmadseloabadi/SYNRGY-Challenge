@@ -7,6 +7,20 @@ class App {
     this.clearButton = document.getElementById("clear-btn");
     this.searchButton = document.getElementById("search-btn");
     this.carContainerElement = document.getElementById("cars-container");
+
+    this.formInputs = document.querySelectorAll("input, select");
+
+    this.formInputs.forEach((input) => {
+      input.addEventListener("focus", () => {
+        // Saat form input mendapatkan fokus, tampilkan overlay gelap
+        document.getElementById("overlay").style.display = "block";
+      });
+
+      input.addEventListener("blur", () => {
+        // Saat form input kehilangan fokus, sembunyikan overlay gelap
+        document.getElementById("overlay").style.display = "none";
+      });
+    });
   }
 
   async init() {
@@ -22,14 +36,17 @@ class App {
     console.log("Jumlah Mobil :", data);
 
     if (data.length == 0 || data == undefined) {
-      const node = document.createElement("div");
-      node.innerHTML = "<h1> No Car Available </h1>";
-      this.carContainerElement.appendChild(node);
+      const div = document.createElement("div");
+      div.style.width = "fit-content";
+      div.innerHTML = "<h1> No Car Available </h1>";
+      this.carContainerElement.appendChild(div);
     } else {
       data.forEach((Car) => {
-        const node = document.createElement("div");
-        node.innerHTML = Car.render();
-        this.carContainerElement.appendChild(node);
+        const div = document.createElement("div");
+        div.style.width = "fit-content";
+        div.className = "col";
+        div.innerHTML = Car.render();
+        this.carContainerElement.appendChild(div);
       });
     }
   };
