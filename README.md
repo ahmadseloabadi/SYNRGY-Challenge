@@ -3,5 +3,5 @@
 <br> on progress :)
 
 - Oauth
-- table cars
+- table cars on DB
 - routing blm sesuai
