@@ -41,7 +41,6 @@ class Car {
 
   render() {
     return `
-
     <div class="card shadow bg-white" style="width: 18rem; border-radius: 8px;">
         <img src="${this.image}" class="card-img-top img-fluid" style="height: 190px; object-fit: cover;" />
         <div class="card-body" style="font-size: 14px; padding:24px;">
@@ -55,7 +54,6 @@ class Car {
             <a href="#" class="btn btn-primary text-white w-100 mt-4 fw-bold " style="font-size: 14px">Pilih Mobil</a>
         </div>
     </div>
-
     `;
   }
 }
