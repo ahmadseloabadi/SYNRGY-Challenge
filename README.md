@@ -4,4 +4,5 @@
 
 - Oauth
 - table cars on DB
-- routing blm sesuai
+- routing is not appropriate
+- alert after delete and create car
