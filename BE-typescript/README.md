@@ -1,4 +1,4 @@
-# challenge_6 - Ahmad Selo Abadi - FSW 1
+# BE for FE-react - Ahmad Selo Abadi - FSW 1
 
 # Routers
 
@@ -17,13 +17,13 @@
 4. Delete car by id (DELETE) = http://localhost:8000/api/cars/:id
 5. Update car by id (PATCH) = http://localhost:8000/api/cars/:id
 
-<!-- - USERS (only access by superadmin)
+- USERS (only access by superadmin)
 
 1. Get list users (GET) = http://localhost:8000/api/users
 2. Get user by id (GET) = http://localhost:8000/api/users/:id
 3. Create user (POST) = http://localhost:8000/api/users
 4. Delete user by id (DELETE) = http://localhost:8000/api/users/:id
-5. Update user by id (PATCH) = http://localhost:8000/api/users/:id -->
+5. Update user by id (PATCH) = http://localhost:8000/api/users/:id
 
 - SWAGGER
 - run swagger-ui = http://localhost:8000/api-docs
