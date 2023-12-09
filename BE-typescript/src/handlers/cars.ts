@@ -146,6 +146,12 @@ class CarsHandler {
       car_rentperday: payload.car_rentperday,
       car_size: payload.car_size,
       car_img: updatedCar?.car_img,
+      create_by: updatedCar?.create_by,
+      update_by: payload.update_by,
+      delete_by: updatedCar?.delete_by,
+      create_at: updatedCar?.create_at,
+      update_at: payload.update_at,
+      delete_at: updatedCar?.delete_at,
     };
 
     if (!updatedCar) {
@@ -161,7 +167,7 @@ class CarsHandler {
       status: "UPDATED",
       message: "Car successfully updated",
       data: {
-        old_car: updatedCar,
+        old_data: updatedCar,
         new_data: payloadUser,
       },
     };

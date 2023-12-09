@@ -53,7 +53,47 @@ paths:
                       data:
                         allOf:
                           - $ref: "#/components/schemas/AuthRegisterResponse"
-  /api/auth/user:
+  /api/auth/register-admin:
+    post:
+      summary: Register admin
+      security:
+        - BearerAuth: []
+      tags:
+        - Auth
+      consumes:
+        - application/json
+      requestBody:
+        required: true
+        content:
+          "application/json":
+            schema:
+              $ref: "#/components/schemas/AuthRegisterRequest"
+      produces:
+        - application/json
+      responses:
+        201:
+          description: Registered admin
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        allOf:
+                          - $ref: "#/components/schemas/AuthRegisterResponse"
+        401:
+          description: UNATHORIZED
+          content:
+            "application/json":
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Default"
+                  - properties:
+                      data:
+                        type: object
+                        default: null
+  /api/auth/me:
     get:
       summary: Get Logged In User
       security:
@@ -76,20 +116,8 @@ paths:
                       data:
                         allOf:
                           - $ref: "#/components/schemas/UserResponse"
-  /api/auth/admin:
-    get:
-      summary: Get Logged In admin
-      security:
-        - BearerAuth: []
-      tags:
-        - Auth
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      responses:
-        200:
-          description: admin data
+        401:
+          description: UNATHORIZED
           content:
             "application/json":
               schema:
@@ -97,5 +125,5 @@ paths:
                   - $ref: "#/components/schemas/Default"
                   - properties:
                       data:
-                        allOf:
-                          - $ref: "#/components/schemas/UserResponse"
+                        type: object
+                        default: null

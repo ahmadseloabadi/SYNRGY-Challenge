@@ -45,7 +45,41 @@ class CarServices {
   }
   static async getCarsById(queryId: number): Promise<Car[]> {
     const listCar = await CarsRepository.getCarsById(queryId);
-    return listCar;
+    const listCarResponse: CarResponse[] = listCar.map((car) => {
+      const carResponse: CarResponse = {
+        id: car.id as number,
+        car_name: car.car_name,
+        car_rentperday: car.car_rentperday,
+        car_size: car.car_size,
+        car_img: car.car_img,
+        created_by: {
+          id: car.created_by?.id as number,
+          name: car.created_by?.name as string,
+          email: car.created_by?.email as string,
+          profile_picture_file: car.created_by?.profile_picture_url as string,
+          password: car.created_by?.password as string,
+        },
+        updated_by: {
+          id: car.updated_by?.id as number,
+          name: car.updated_by?.name as string,
+          email: car.updated_by?.email as string,
+          profile_picture_file: car.updated_by?.profile_picture_url as string,
+          password: car.updated_by?.password as string,
+        },
+        deleted_by: {
+          id: car.deleted_by?.id as number,
+          name: car.deleted_by?.name as string,
+          email: car.deleted_by?.email as string,
+          profile_picture_file: car.deleted_by?.profile_picture_url as string,
+          password: car.deleted_by?.password as string,
+        },
+        create_at: car.create_at,
+        update_at: car.update_at,
+        delete_at: car.delete_at,
+      };
+      return carResponse;
+    });
+    return listCarResponse;
   }
   static async createCar(car: CarRequest): Promise<Car> {
     const fileBase64 = car.car_img?.buffer.toString("base64");
