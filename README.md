@@ -2,7 +2,8 @@
 
 <br> on progress :)
 
-- Oauth
 - table cars on DB
 - routing is not appropriate
 - alert after delete and create car
+- pagination
+- redux
