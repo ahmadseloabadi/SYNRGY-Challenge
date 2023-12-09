@@ -105,15 +105,15 @@ export default function CreateCar() {
                       value={car_size || "Enter Car Size"}
                       options={[
                         {
-                          value: "S",
+                          value: "Small",
                           label: "Small",
                         },
                         {
-                          value: "M",
+                          value: "Medium",
                           label: "Medium",
                         },
                         {
-                          value: "L",
+                          value: "Large",
                           label: "Large",
                         },
                       ]}

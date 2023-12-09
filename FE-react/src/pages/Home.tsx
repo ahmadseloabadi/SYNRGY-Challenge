@@ -43,6 +43,20 @@ export default function Home() {
   const [showAlert, setShowAlert] = useState(false);
   const [carToDelete, setCarToDelete] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [filteredSize, setFilteredSize] = useState("All"); // Default to show all sizes
+
+  const filterBySize = (size: string) => {
+    setFilteredSize(size);
+  };
+
+  // Use the filteredSize state to display only the cards that match the selected size
+  const filteredCars = cars.filter((car: CarResponse) => {
+    if (filteredSize === "All") {
+      return true; // Show all cards if "All" is selected
+    }
+    return car.car_size === filteredSize;
+  });
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -119,6 +133,7 @@ export default function Home() {
     }
   };
 
+  console.log("car length :", cars.length);
   const logoutHandler = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("email");
@@ -152,16 +167,34 @@ export default function Home() {
                 </button>
               </Link>
             </div>
+            <div className="flex gap-x-4">
+              {["All", "Small", "Medium", "Large"].map((size) => (
+                <button
+                  key={size}
+                  onClick={() => filterBySize(size)}
+                  className={` border-2 border-blue-800 font-bold text-blue-800 py-2 px-3 rounded-sm hover:text-white hover:bg-blue-800 ${
+                    size === filteredSize
+                      ? "text-white bg-blue-800"
+                      : " bg-indigo-200"
+                  }`}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
 
             <div
               className={`card-container mt-[10px]  flex gap-y-4 gap-x-6 flex-wrap ${
                 isSidebarOpen ? "justify-start" : "justify-start "
               }`}
             >
-              {!cars.length /*jika carsnya tidak ada maka */ && (
-                /*akan menjalankan "data kosong" */ <div>Data kosong</div>
+              {!filteredCars.length /*jika carsnya tidak ada maka */ && (
+                /*akan menjalankan "data kosong" */ <div className="min-h-screen">
+                  Data kosong
+                </div>
               )}
-              {cars.map((car: CarResponse) => (
+
+              {filteredCars.map((car: CarResponse) => (
                 <div
                   key={car.id}
                   className="card flex flex-col gap-4  shadow bg-white border-0  text-sm p-6  rounded-xl  w-[351px] "
@@ -268,10 +301,10 @@ export default function Home() {
                         <TrashIcon className="h-5 w-5 " />
                         Delete
                       </button>
-                      <button className=" bg-green-500 hover:bg-green-700 text-white  rounded w-[143.5px] h-12 ">
+                      <button className="flex bg-green-500 hover:bg-green-700 items-center justify-center text-white  rounded w-[143.5px] h-12 ">
                         <Link
                           to={`/update-car/${car.id}`}
-                          className="inline-flex font-bold justify-center"
+                          className=" flex font-bold  "
                         >
                           <PencilSquareIcon className="h-5 w-5" />
                           Edit

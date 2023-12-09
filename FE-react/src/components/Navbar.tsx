@@ -64,16 +64,17 @@ export default function Navbar({
               )}
             </h1>
           </div>
-          <div className="w-2/3 truncate ...">
+          <div className="w-[80px] text-ellipsis overflow-x-clip items-center">
             <Dropdown
               label=""
               inline
               renderTrigger={() => (
                 <span>
                   {email || "who am i"}
-                  <ChevronDownIcon className="ml-2 inline-flex h-5 w-5 text-black" />
+                  <ChevronDownIcon className=" h-5 w-5 text-black bg-white absolute top-6 right-6  " />
                 </span>
               )}
+              content="max-w-fit"
             >
               <Dropdown.Item content="fit">
                 {isLoggedIn ? (
