@@ -184,13 +184,15 @@ export default function Home() {
             </div>
 
             <div
-              className={`card-container mt-[10px]  flex gap-y-4 gap-x-6 flex-wrap ${
+              className={`card-container mt-5  flex gap-y-4 gap-x-6 flex-wrap ${
                 isSidebarOpen ? "justify-start" : "justify-start "
               }`}
             >
               {!filteredCars.length /*jika carsnya tidak ada maka */ && (
-                /*akan menjalankan "data kosong" */ <div className="min-h-screen">
-                  Data kosong
+                /*akan menjalankan "data kosong" */ <div className=" min-h-screen w-full ">
+                  <div className="w-fit h-fit py-3 px-4 shadow bg-white rounded-md">
+                    <h1 className="medium-header">Empty Cars Data </h1>
+                  </div>
                 </div>
               )}
 
