@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 import CarsHandler from "../handlers/cars";
-// import UsersHandler from "../handlers/users";
+import UsersHandler from "../handlers/users";
 import AuthHandler from "../handlers/auth";
 import AuthMiddleware from "../middleware/auth";
 import fileUploadsCloudinary from "../utils/fileUploadsCloudinary";
@@ -9,12 +9,15 @@ import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
 import { Context } from "vm";
 import dotenv from "dotenv";
+import cors from "cors";
+
 dotenv.config();
 
 const app: Application = express();
 const PORT = process.env.APP_PORT;
 
 app.use(express.json());
+app.use(cors());
 declare global {
   namespace Express {
     interface Request {
@@ -24,7 +27,7 @@ declare global {
 }
 
 // Init handlers
-// const usersHandler = new UsersHandler();
+const usersHandler = new UsersHandler();
 const authHandler = new AuthHandler();
 const carsHandler = new CarsHandler();
 
@@ -34,7 +37,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //Define routers
 //cars
-app.get("/api/cars", AuthMiddleware.authenticateAdmin, carsHandler.getCars);
+app.get("/api/cars", carsHandler.getCars);
 app.get(
   "/api/cars/:id",
   AuthMiddleware.authenticateAdmin,
@@ -58,34 +61,34 @@ app.delete(
   carsHandler.deleteCarById
 );
 
-// // Users
-// app.get(
-//   "/api/users",
-//   AuthMiddleware.authenticateSuperAdmin,
-//   usersHandler.getUsersByName
-// );
-// app.get(
-//   "/api/users/:id",
-//   AuthMiddleware.authenticateSuperAdmin,
-//   usersHandler.getUsersById
-// );
-// app.post(
-//   "/api/users",
-//   AuthMiddleware.authenticateSuperAdmin,
-//   fileUploadsCloudinary.single("profile_picture_url"),
-//   usersHandler.createUser
-// );
-// app.patch(
-//   "/api/users/:id",
-//   AuthMiddleware.authenticateSuperAdmin,
-//   fileUploadsCloudinary.single("profile_picture_url"),
-//   usersHandler.updateUserById
-// );
-// app.delete(
-//   "/api/users/:id",
-//   AuthMiddleware.authenticateSuperAdmin,
-//   usersHandler.deleteUserById
-// );
+// Users
+app.get(
+  "/api/users",
+  AuthMiddleware.authenticateSuperAdmin,
+  usersHandler.getUsersByName
+);
+app.get(
+  "/api/users/:id",
+  AuthMiddleware.authenticateSuperAdmin,
+  usersHandler.getUsersById
+);
+app.post(
+  "/api/users",
+  AuthMiddleware.authenticateSuperAdmin,
+  fileUploadsCloudinary.single("profile_picture_url"),
+  usersHandler.createUser
+);
+app.patch(
+  "/api/users/:id",
+  AuthMiddleware.authenticateSuperAdmin,
+  fileUploadsCloudinary.single("profile_picture_url"),
+  usersHandler.updateUserById
+);
+app.delete(
+  "/api/users/:id",
+  AuthMiddleware.authenticateSuperAdmin,
+  usersHandler.deleteUserById
+);
 
 // Auth
 //regis admin by superadmin
@@ -102,6 +105,9 @@ app.get(
   AuthMiddleware.authenticate,
   authHandler.getLoggedInUser
 );
+
+// Google Auth
+app.get("/api/auth/login/google", authHandler.loginGoogle);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

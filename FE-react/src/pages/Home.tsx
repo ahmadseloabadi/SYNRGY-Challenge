@@ -122,6 +122,7 @@ export default function Home() {
   const logoutHandler = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("email");
+    localStorage.removeItem("profile");
 
     setIsLoggedIn(false);
   };

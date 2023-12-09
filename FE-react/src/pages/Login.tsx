@@ -1,12 +1,64 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { jwtDecode } from "jwt-decode";
+
+interface GoogleOauthResponse {
+  credential?: string;
+}
+interface DecodedToken {
+  email: string;
+  picture: string; // Adjust this property based on the actual structure of the decoded token
+  // Add other properties as needed
+}
+const cars_api_base_url = "http://localhost:8000";
 
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const tweets_api_base_url = "http://localhost:8000";
+  const handleLoginGoogleSuccess = async (response: GoogleOauthResponse) => {
+    try {
+      console.log("response google success:", response);
+
+      // Kirim kredensial Google ke backend untuk verifikasi
+
+      const backendResponse = await fetch(
+        cars_api_base_url +
+          "/api/auth/login/google?access_token=" +
+          response.credential,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      const backendResponseJson = await backendResponse.json();
+      console.log("response backend :", backendResponseJson);
+
+      if (backendResponse.status !== 200) {
+        // Tangani kesalahan backend, misalnya, kredensial Google tidak valid
+        alert("error: " + backendResponseJson.message);
+        return;
+      }
+
+      // Simpan token akses backend ke penyimpanan lokal
+      localStorage.setItem(
+        "access_token",
+        backendResponseJson.data.access_token
+      );
+      const userInfo = jwtDecode(response.credential as string) as DecodedToken;
+
+      localStorage.setItem("email", userInfo.email);
+      localStorage.setItem("profile", userInfo.picture);
+      // Alihkan ke halaman beranda
+      navigate("/");
+    } catch (error) {
+      console.error("Terjadi masalah ketika Login with Google:", error);
+      alert("Terjadi masalah ketika Login with Google.");
+    }
+  };
 
   return (
     <div className="flex items-center  justify-end  mx-auto md:h-screen  lg:py-0">
@@ -60,7 +112,7 @@ export default function Login() {
             />
           </div>
 
-          <div className="flex justify-center">
+          <div className="flex flex-col justify-center items-center gap-y-2">
             <button
               className="shadow bg-blue-900 hover:bg-blue-800 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-3 rounded w-[370px] "
               typeof="button"
@@ -73,7 +125,7 @@ export default function Login() {
                 };
 
                 const response = await fetch(
-                  tweets_api_base_url + "/api/auth/login",
+                  cars_api_base_url + "/api/auth/login",
                   {
                     method: "post",
                     headers: { "Content-Type": "application/json" },
@@ -99,6 +151,9 @@ export default function Login() {
             >
               Sign In
             </button>
+            <GoogleOAuthProvider clientId="114463867236-ld2p6ngrvimrkdl47v11cgi6sksom583.apps.googleusercontent.com">
+              <GoogleLogin onSuccess={handleLoginGoogleSuccess} />;
+            </GoogleOAuthProvider>
           </div>
         </form>
       </div>

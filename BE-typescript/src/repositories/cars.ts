@@ -11,7 +11,8 @@ class CarsRepository {
   static async getCarsById(queryId: number): Promise<Car[]> {
     const listCarById = await CarEntity.query()
       .withGraphFetched("[created_by,updated_by,deleted_by]")
-      .where("id", queryId);
+      .where("id", queryId)
+      .whereNull("delete_at");
     return listCarById;
   }
 

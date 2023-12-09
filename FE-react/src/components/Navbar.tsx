@@ -20,6 +20,7 @@ export default function Navbar({
   onLogout,
 }: NavbarProps) {
   const email = localStorage.getItem("email");
+  const profile = localStorage.getItem("profile");
   return (
     <div className="navbar flex  shadow items-center p-4 relative h-[70px] min-h-max ">
       <div className="flex justify-around w-1/6 md:justify-between ">
@@ -56,7 +57,11 @@ export default function Navbar({
         <div className="flex items-center gap-x-2 ml-6 w-[143px]">
           <div className="rounded-full bg-indigo-200 w-9 h-9 flex justify-center items-center ">
             <h1 className="font-bold text-base ">
-              {Array.from(email || "who am i")[0]}
+              {profile ? (
+                <img src={profile} className="rounded-full" />
+              ) : (
+                Array.from(email || "who am i")[0]
+              )}
             </h1>
           </div>
           <div className="w-2/3 truncate ...">
