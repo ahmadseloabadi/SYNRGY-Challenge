@@ -10,7 +10,7 @@ class CarsHandler {
     const page = parseInt(req.query.page as string); // Mengambil nilai halaman dari query string
     const pageSize = parseInt(req.query.pageSize as string); // Mengambil nilai ukuran halaman dari query string
     const sizeFilter: string | undefined = req.query.size as string | undefined;
-    console.log("page + pagesize", page, pageSize);
+    console.log("page + pagesize +sizefilter", page, pageSize, sizeFilter);
     try {
       const { cars, totalItems } = await CarsService.getCars(
         page,
