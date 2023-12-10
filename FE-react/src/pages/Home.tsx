@@ -235,9 +235,9 @@ export default function Home() {
                       <div>
                         <h3 className="font-normal">created_by</h3>
                         <ul className="pl-4">
-                          <li className="font-normal">
+                          {/* <li className="font-normal">
                             id : {car.created_by.id}
-                          </li>
+                          </li> */}
                           <li className="font-normal">
                             username : {car.created_by.name}
                           </li>
@@ -251,9 +251,9 @@ export default function Home() {
                       <div>
                         <h3 className="font-normal">updated_by</h3>
                         <ul className="pl-4">
-                          <li className="font-normal">
+                          {/* <li className="font-normal">
                             id : {car.updated_by.id}
-                          </li>
+                          </li> */}
                           <li className="font-normal">
                             username : {car.updated_by.name}
                           </li>
@@ -267,9 +267,9 @@ export default function Home() {
                       <div>
                         <h3 className="font-normal">deleted_by</h3>
                         <ul className="pl-4">
-                          <li className="font-normal">
+                          {/* <li className="font-normal">
                             id : {car.deleted_by.id}
-                          </li>
+                          </li> */}
                           <li className="font-normal">
                             username : {car.deleted_by.name}
                           </li>
