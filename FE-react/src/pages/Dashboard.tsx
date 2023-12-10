@@ -252,7 +252,7 @@ export default function Dashboard() {
                             </Link>
                           </button>
                           <button
-                            className="text-red-500 hover:text-red-700"
+                            className="ml-2 text-red-500 font-bold  hover:text-red-700"
                             onClick={() => deleteCar(car.id)}
                           >
                             Delete
