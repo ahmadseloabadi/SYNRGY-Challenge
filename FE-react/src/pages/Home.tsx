@@ -171,13 +171,13 @@ export default function Home() {
           onLogout={logoutHandler}
         />
 
-        <div className="main-content flex h-full  ">
+        <div className="main-content flex h-full bg-gray-100  ">
           <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-          <div className="content grid w-full  bg-gray-100 px-6 pt-9 ">
-            <p className=" text-md">
+          <div className="content-items grid w-full h-fit  px-6 pt-9 ">
+            <p className=" text-md ">
               <strong>Car {">"} </strong>List Car
             </p>
-            <div className="flex items-center justify-between ">
+            <div className="flex items-center justify-between h-fit ">
               <p className="font-bold text-xl">List car</p>
               <Link to="/create-car">
                 <button className="flex py-2 px-3 font-bold text-sm items-center gap-x-3 text-white rounded-sm bg-blue-800">
@@ -186,12 +186,12 @@ export default function Home() {
                 </button>
               </Link>
             </div>
-            <div className="flex gap-x-4">
+            <div className="flex gap-x-4 h-fit">
               {["All", "Small", "Medium", "Large"].map((size) => (
                 <button
                   key={size}
                   onClick={() => filterBySize(size)}
-                  className={` border-2 border-blue-800 font-bold text-blue-800 py-2 px-3 rounded-sm hover:text-white hover:bg-blue-800 ${
+                  className={` border-2 border-blue-800 font-bold text-blue-800 py-2 px-3 rounded-sm hover:text-white hover:bg-blue-800 h-11 ${
                     size === filteredSize
                       ? "text-white bg-blue-800"
                       : " bg-indigo-200"
@@ -203,7 +203,7 @@ export default function Home() {
             </div>
 
             <div
-              className={`card-container mt-5  flex gap-y-4 gap-x-6 flex-wrap ${
+              className={`card-container mt-5 h-full flex gap-y-4 gap-x-6 flex-wrap ${
                 isSidebarOpen ? "justify-start" : "justify-start "
               }`}
             >
