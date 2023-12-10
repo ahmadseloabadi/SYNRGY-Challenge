@@ -1,11 +1,27 @@
 import { Car, CarEntity } from "../models/entity/car";
 
 class CarsRepository {
-  static async getCars(): Promise<Car[]> {
-    const listCar = await CarEntity.query()
-      .withGraphFetched("[created_by,updated_by,deleted_by]")
+  static async getCars(
+    page: number,
+    pageSize: number,
+    sizeFilter?: string
+  ): Promise<{ cars: Car[]; totalItems: number }> {
+    let query = CarEntity.query()
+      .withGraphFetched("[created_by, updated_by, deleted_by]")
       .whereNull("delete_at");
-    return listCar;
+    console.log("size :", sizeFilter);
+    if (sizeFilter) {
+      query = query.where("car_size", sizeFilter);
+    }
+    const offset = (page - 1) * pageSize;
+    const [cars, totalItems] = await Promise.all([
+      query.offset(offset).limit(pageSize),
+      sizeFilter
+        ? query.resultSize()
+        : CarEntity.query().whereNull("delete_at").resultSize(),
+    ]);
+
+    return { cars, totalItems };
   }
 
   static async getCarsById(queryId: number): Promise<Car[]> {

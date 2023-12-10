@@ -3,20 +3,37 @@ import { DefaultResponse } from "../models/dto/default";
 import { Car } from "../models/entity/car";
 import { CarRequest, CarResponse } from "../models/dto/car";
 import CarsService from "../services/cars";
+import { log } from "console";
 
 class CarsHandler {
   async getCars(req: Request, res: Response) {
-    const carsList: CarResponse[] = await CarsService.getCars();
+    const page = parseInt(req.query.page as string); // Mengambil nilai halaman dari query string
+    const pageSize = parseInt(req.query.pageSize as string); // Mengambil nilai ukuran halaman dari query string
+    const sizeFilter: string | undefined = req.query.size as string | undefined;
+    console.log("page + pagesize", page, pageSize);
+    try {
+      const { cars, totalItems } = await CarsService.getCars(
+        page,
+        pageSize,
+        sizeFilter
+      );
 
-    const response: DefaultResponse = {
-      status: "OK",
-      message: "Success retrieving data",
-      data: {
-        cars: carsList,
-      },
-    };
+      const response = {
+        status: "OK",
+        message: "Success retrieving data",
+        data: {
+          cars: cars,
+          totalItems: totalItems,
+        },
+      };
 
-    res.status(200).send(response);
+      res.status(200).send(response);
+    } catch (error) {
+      console.error("Error getting cars:");
+      res
+        .status(500)
+        .send({ status: "Error", message: "Internal Server Error" });
+    }
   }
 
   async getCarsById(req: Request, res: Response) {

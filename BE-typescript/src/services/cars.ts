@@ -4,10 +4,18 @@ import CarsRepository from "../repositories/cars";
 import cloudinary from "../../config/cloudinary";
 
 class CarServices {
-  static async getCars(): Promise<CarResponse[]> {
-    const listCar = await CarsRepository.getCars();
+  static async getCars(
+    page: number,
+    pageSize: number,
+    sizeFilter?: string
+  ): Promise<{ cars: CarResponse[]; totalItems: number }> {
+    const { cars, totalItems } = await CarsRepository.getCars(
+      page,
+      pageSize,
+      sizeFilter
+    );
 
-    const listCarResponse: CarResponse[] = listCar.map((car) => {
+    const listCarResponse: CarResponse[] = cars.map((car) => {
       const carResponse: CarResponse = {
         id: car.id as number,
         car_name: car.car_name,
@@ -41,7 +49,7 @@ class CarServices {
       };
       return carResponse;
     });
-    return listCarResponse;
+    return { cars: listCarResponse, totalItems };
   }
   static async getCarsById(queryId: number): Promise<Car[]> {
     const listCar = await CarsRepository.getCarsById(queryId);
