@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev ./src/routes/app.ts",
     "migrate:up": "knex migrate:up",
-    "migrate:down": "knex migrate:up",
+    "migrate:down": "knex migrate:down",
     "migrate:rollback": "knex migrate:up",
     "migrate:rollbackall": "knex migrate:rollback --all",
     "seed": "knex seed:run --knexfile ./knexfile.ts"
